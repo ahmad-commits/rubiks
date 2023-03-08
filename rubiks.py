@@ -21,7 +21,7 @@ def reset():
         cube[x] = indexing(l)
         x += 1
     print('Cube Reset!')
-
+reset()
 # Front Turn (F)
 
 def front_turn():
@@ -31,4 +31,15 @@ def front_turn():
     cube[3, :, -1] = original_cube[-1, 0, :]
     cube[-1, 0, :] = np.flip(original_cube[1, :, 0])
     cube[0] = np.flip(cube[0].T, axis=1)
+    return cube
+
+# Right Turn (R)
+
+def right_turn():
+    original_cube = np.copy(cube)
+    cube[4, :, -1]  = original_cube[0, :, -1]
+    cube[0, :, -1]  = original_cube[-1, :, -1]
+    cube[-1, :, -1] = np.flip(original_cube[2, :, 0])
+    cube[2, :, 0]   = np.flip(original_cube[4, :, -1])
+    cube[1] = np.flip(original_cube[1].T, axis=1)
     return cube

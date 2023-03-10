@@ -26,11 +26,11 @@ reset()
 
 def front_turn():
     original_cube = np.copy(cube)
-    cube[1, :, 0]  = original_cube[4, -1, :]
-    cube[4, -1, :] = original_cube[3, :, -1]
-    cube[3, :, -1] = original_cube[-1, 0, :]
-    cube[-1, 0, :] = np.flip(original_cube[1, :, 0])
-    cube[0] = np.flip(cube[0].T, axis=1)
+    cube[1, :, 0] = original_cube[4, 2]
+    cube[4, 2]    = original_cube[3, :, -1]
+    cube[3, : -1] = original_cube[-1, :, 0]
+    cube[-1, :, 0]= original_cube[1, :, 0]
+    cube[0] = np.flip(original_cube[1].T, axis=1)
     return cube
 
 # Right Turn (R)
